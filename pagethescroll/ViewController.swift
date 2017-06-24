@@ -12,7 +12,7 @@ class ViewController: UIViewController {
 var images = [UIImageView] ()
     
     @IBOutlet weak var scrollview: UIScrollView!
-   // var contentwidth : CGFloat = 0.0
+    var contentwidth : CGFloat = 0.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,13 +24,13 @@ var images = [UIImageView] ()
             let image = UIImage(named: "icon\(x).png")
             let imageview = UIImageView(image: image)
             images.append(imageview)
-          //  var newx : CGFloat = 0.0
-            //newx = view.frame.size.height * CGFloat(x) + view.frame.midX/2
+            var newx : CGFloat = 0.0
+            newx = view.frame.width/2 + view.frame.width * CGFloat (x)
             scrollview.addSubview(imageview)
-            imageview.frame = CGRect(x:(view.frame.size.width/2) - width/2 , y:(view.frame.height/2) - heigth/2 , width:width, height:heigth)
-            //contentwidth += view.frame.size.width * CGFloat(x) + view.frame.midX/2
+            imageview.frame = CGRect(x:newx - width/2 , y:(view.frame.height/2) - heigth/2 , width:width, height:heigth)
+            contentwidth += newx
         }
-        //scrollview.contentSize = CGSize(width: contentwidth, height: view.frame.size.height)
+        scrollview.contentSize = CGSize(width: contentwidth, height: view.frame.size.height)
         
     }
 
